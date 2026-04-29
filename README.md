@@ -1,6 +1,20 @@
 # Pizza_delivery_app
-Pizza delivery app build with Django
+Pizza delivery app build with Django rest framework
+# 🍕 PizzaNova
 
+A stunning, full-stack pizza delivery application built with **Django**. This platform features a premium cinematic UI, secure user authentication, and a real-time cart management system.
+
+## ✨ Key Features
+* **Authentication:** Secure Login/Register system with personalized welcome banners.
+* **Smart Cart:** Add items, adjust quantities, and remove items with real-time total calculation.
+* **Premium UI:** Modern design using Bootstrap 5, glassmorphism effects, and smooth hover animations.
+* **Security:** UUID-based routing for all cart items and full CSRF protection.
+
+## 🛠️ Quick Start
+1. **Clone & Navigate:**
+   ```bash
+   git clone [https://github.com/yourusername/Pizza_delivery_app.git](https://github.com/yourusername/Pizza_delivery_app.git)
+   cd Pizza_delivery_app
 
 
 
