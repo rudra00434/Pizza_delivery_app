@@ -42,7 +42,7 @@ def register_page(request):
         user.save()
 
         messages.success(request, 'Account created successfully')
-        return redirect('/login/')
+        return redirect('home')
 
     return render(request, 'register.html')
 
@@ -62,7 +62,7 @@ def login_page(request):
             return redirect('/login/')
 
         login(request, user)
-        return redirect('/')
+        return redirect('home')
 
     return render(request, 'login.html')
 
@@ -97,3 +97,17 @@ def add_cart(request, pizza_uid):
 
     messages.success(request, "Item added to cart")
     return redirect('/')
+@login_required(login_url='login')
+def my_cart(request):
+    carts = Cart.objects.filter(user=request.user,is_paid=False).first()
+    context={
+        'cart':carts
+    }
+    return render(request,'my_carts.html',context)
+
+def remove_cart_item(request,item_uid):
+    cart_item = get_object_or_404(CartItems,uid=item_uid)
+    cart_item.delete()
+    messages.info(request,"The item is removed successfully")
+    return redirect('my_carts')
+
