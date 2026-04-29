@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block start %}
+
+<style>
+  .pizza-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border-radius: 16px;
+    overflow: hidden;
+    border: none;
+  }
+  .pizza-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(220, 53, 69, 0.25) !important;
+  }
+  .pizza-card img {
+    transition: transform 0.4s ease;
+    height: 200px;
+    object-fit: cover;
+  }
+  .pizza-card:hover img {
+    transform: scale(1.08);
+  }
+  .pizza-card .card-body {
+    padding: 1.2rem;
+  }
+  .pizza-card .card-title {
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .pizza-card p {
+    font-size: 0.85rem;
+    color: #555;
+  }
+</style>
+
+<div class="container mt-5">
+    <div class="row g-4">
+        {% for pizza in pizzas %}
+        <div class="col-md-3">
+            <div class="card shadow pizza-card">
+                <img src="/media/{{ pizza.image }}" class="card-img-top" alt="{{ pizza.pizza_name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ pizza.pizza_name }}</h5>
+                    <p>Price - {{ pizza.price }} | Category : {{ pizza.category.category_name }}</p>
+                    <a href="{% url 'add_cart' pizza.uid %}" class="btn btn-success btn-sm">Cart <i class="fa-solid fa-cart-shopping"></i></a>
+                    <a href="#" class="btn btn-primary btn-sm">20% discount</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
